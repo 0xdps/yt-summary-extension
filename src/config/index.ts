@@ -101,7 +101,8 @@ export async function getProviderConfigs(): Promise<ProviderConfigs> {
     const configKeys = result[configKey]?.apiKey?.split(',').map((v) => v.trim()) ?? []
     const randomIndex = configKeys.length > 0 ? Math.floor(Math.random() * configKeys.length) : 0
     const apiKey = configKeys[randomIndex] ?? ''
-    result[configKey].apiKey = apiKey
+
+    // Initialize config object if it doesn't exist
     if (!result[configKey]) {
         result[configKey] = {}
     }

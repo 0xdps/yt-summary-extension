@@ -79,6 +79,13 @@ export async function getRawTranscript(link) {
 
     // Parse Transcript
     const jQueryParse = $.parseHTML(transcriptPageXml)
+
+    // Check if parsing was successful and element exists
+    if (!jQueryParse || jQueryParse.length < 2 || !jQueryParse[1]?.childNodes) {
+        console.error('Failed to parse transcript XML')
+        return []
+    }
+
     const textNodes = jQueryParse[1].childNodes
 
     return Array.from(textNodes).map((i) => {

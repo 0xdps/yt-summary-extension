@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-$primary-color: #0070f3;
-$secondary-color: #000;
-$gray-color: #444;
+$primary-color: #667eea;
+$secondary-color: #764ba2;
+$accent-color: #f093fb;
+$gray-color: #e0e7ff;
 $font-size-large: 16px;
 $font-size-normal: 14px;
 $font-size-small: 12px;
@@ -12,10 +13,11 @@ $font-size-small: 12px;
 // card
 .glarity--card {
   font-size: $font-size-normal;
-  border: 1px solid #ddd;
-  box-shadow: 0 3px 8px rgb(0 0 0 / 35%);
-  border-radius: 6px !important;
-  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
 
   .glarity--card__head {
     display: flex;
@@ -148,13 +150,28 @@ $font-size-small: 12px;
 
   &.glarity--btn__primary {
     color: #fff;
-    background: $primary-color;
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
   }
 
   &.glarity--btn__primary--ghost {
     color: $primary-color;
-    background: #fff;
-    border: 1px solid $primary-color;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid $primary-color;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $primary-color;
+      color: #fff;
+      transform: translateY(-2px);
+    }
   }
 
   &.glarity--btn__block {
@@ -182,9 +199,10 @@ $font-size-small: 12px;
 // Dark
 @media (prefers-color-scheme: dark) {
   .glarity--card {
-    background: rgb(35, 36, 40);
-    border-color: #444950;
-    box-shadow: 0 3px 9px rgb(255 255 255 / 30%);
+    background: rgba(30, 30, 46, 0.95);
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+    backdrop-filter: blur(10px);
 
     .glarity--card__head {
       border-bottom-color: #444950;
